@@ -9,8 +9,8 @@ class Blog::Tag < ActiveRecord::Base
   has_many :posts, :through => :taggings
     
   # -- Validations ----------------------------------------------------------
-  validates_uniqueness_of :name, :case_sensitive => false
-  
+  validates :name, :presence => true, :uniqueness => { :case_sensitive => false }
+
   # -- Callbacks ------------------------------------------------------------
   before_validation :strip_name
   

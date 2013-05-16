@@ -7,8 +7,14 @@ class TagTest < ActiveSupport::TestCase
       assert tag.valid?, tag.errors.to_s
     end
   end
-  
-  def test_validation
+
+  def test_validates_name_presence
+    tag = Blog::Tag.new
+    assert tag.invalid?
+    assert_has_errors_on tag, [:name]
+  end
+
+  def test_validates_name_uniqueness
     old_tag = blog_tags(:tag)
     tag = Blog::Tag.new(:name => old_tag.name)
     assert tag.invalid?
