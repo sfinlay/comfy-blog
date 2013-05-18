@@ -1,4 +1,6 @@
-class Blog::PostsController < ApplicationController
+class Blog::PostsController < BaseController
+
+#class Blog::PostsController < ApplicationController
   
   layout ComfyBlog.config.public_layout
   
